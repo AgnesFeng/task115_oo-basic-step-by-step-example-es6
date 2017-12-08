@@ -1,12 +1,14 @@
 "use strict";
-import chai from "chai";
-import sinonChai from "sinon-chai";
-const expect = chai.expect;
-chai.use(sinonChai);
-
-import Person from "../../src/practice_2/person.js";
-import Student from "../../src/practice_2/student.js";
-
+// import chai from "chai";
+// import sinonChai from "sinon-chai";
+// const expect = chai.expect;
+// chai.use(sinonChai);
+//
+// import Person from "../../src/practice_2/person.js";
+// import Student from "../../src/practice_2/student.js";
+let expect = require('chai').expect;
+let  Person = require( "../../src/practice_2/person.js");
+let  Student = require( "../../src/practice_2/student.js");
 describe("Person", () => {
     it("should have field name and age", () => {
         const person = new Person("Tom", 21);
@@ -31,7 +33,7 @@ describe("Person", () => {
         it("should overwrite Person introduce, introduce student with class", () => {
             const student = new Student("Tom", 21, 2);
             const introduce = student.introduce();
-            expect(introduce).to.equal("I am a Student. I am at Class 2.");
+            expect(introduce).to.equal("I am a Student. I am at klass 2.");
         });
     })
 });

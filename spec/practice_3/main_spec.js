@@ -1,12 +1,17 @@
 "use strict";
-import chai from "chai";
-import sinonChai from "sinon-chai";
-const expect = chai.expect;
-chai.use(sinonChai);
+// import chai from "chai";
+// import sinonChai from "sinon-chai";
+// const expect = chai.expect;
+// chai.use(sinonChai);
+//
+// import Person from "../../src/practice_3/person.js";
+// import Student from "../../src/practice_3/student.js";
+// import Teacher from "../../src/practice_3/worker.js";
 
-import Person from "../../src/practice_3/person.js";
-import Student from "../../src/practice_3/student.js";
-import Worker from "../../src/practice_3/worker.js";
+let expect = require('chai').expect;
+let  Person = require( "../../src/practice_3/person.js");
+let  Student = require( "../../src/practice_3/student.js");
+let  Worker = require( "../../src/practice_3/worker.js");
 
 describe("Person", () => {
     it("should have field name and age", () => {
@@ -32,7 +37,7 @@ describe("Person", () => {
         it("should overwrite Person introduce, introduce with class number", () => {
             const student = new Student("Tom", 21, 2);
             const introduce = student.introduce();
-            expect(introduce).to.equal("I am a Student. I am at Class 2.");
+            expect(introduce).to.equal("I am a Student. I am at klass 2.");
         });
     });
 
@@ -46,7 +51,7 @@ describe("Person", () => {
         it("should overwrite Person introduce, introduce with no field", () => {
             const worker = new Worker("Tom", 21);
             const introduce = worker.introduce();
-            expect(introduce).to.equal("I am a Worker. I have a job.");
+            expect(introduce).to.equal("I am a Teacher. I have a job.");
         });
     });
 });

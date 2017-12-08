@@ -43,7 +43,7 @@ describe("Person", () => {
                 const student = new Student(1, "Tom", 21, klass);
                 const introduce = student.introduce();
 
-                expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Student. I am at Class 2.");
+                expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Student. I am at klass 2.");
             });
 
             it("should print Leader role, given student is leader", () => {
@@ -53,7 +53,7 @@ describe("Person", () => {
                 klass.assignLeader(student);
                 const introduce = student.introduce();
 
-                expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Student. I am Leader of Class 2.");
+                expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Student. I am Leader of klass 2.");
             });
         });
     });
@@ -78,13 +78,13 @@ describe("Person", () => {
             it("should overwrite Person introduce, introduce with name, age and class number, given teacher have class", () => {
                 const teacher = new Teacher(1, "Tom", 21, klasses);
                 const introduce = teacher.introduce();
-                expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2, 3.");
+                expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Teacher. I teach klass 2, 3.");
             });
 
             it("should overwrite Person introduce, introduce with name, age and class number, given teacher have no class", () => {
                 const teacher = new Teacher(1, "Tom", 21);
                 const introduce = teacher.introduce();
-                expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Teacher. I teach No Class.");
+                expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Teacher. I teach No klass.");
             });
         });
     });
@@ -110,7 +110,7 @@ describe("Class", () => {
 
     it("should get display name with number", () => {
         const klass = new Class(2);
-        expect(klass.getDisplayName()).to.equal("Class 2");
+        expect(klass.getDisplayName()).to.equal("klass 2");
     });
 
     describe("#assignLeader", () => {
@@ -154,7 +154,7 @@ describe("Class", () => {
 
             klass.assignLeader(student);
 
-            expect(spy.calledWith("I am Tom. I know Jerry become Leader of Class 2.")).to.be.ok;
+            expect(spy.calledWith("I am Tom. I know Jerry become Leader of klass 2.")).to.be.ok;
         });
     });
 
@@ -182,7 +182,7 @@ describe("Class", () => {
 
             klass.appendMember(student);
 
-            expect(spy.calledWith("I am Tom. I know Jerry has joined Class 2.")).to.be.ok;
+            expect(spy.calledWith("I am Tom. I know Jerry has joined klass 2.")).to.be.ok;
         });
     });
 });

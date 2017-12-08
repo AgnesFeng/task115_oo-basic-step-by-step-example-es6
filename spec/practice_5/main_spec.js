@@ -1,13 +1,16 @@
 "use strict";
-import chai from "chai";
-import sinonChai from "sinon-chai";
-const expect = chai.expect;
-chai.use(sinonChai);
-import Person from "../../src/practice_5/person.js";
-import Student from "../../src/practice_5/student.js";
-import Worker from "../../src/practice_5/worker.js";
+// import chai from "chai";
+// import sinonChai from "sinon-chai";
+// const expect = chai.expect;
+// chai.use(sinonChai);
+// import Person from "../../src/practice_5/person.js";
+// import Student from "../../src/practice_5/student.js";
+// import Teacher from "../../src/practice_5/worker.js";
 
-
+let expect = require('chai').expect;
+let  Person = require( "../../src/practice_5/person.js");
+let  Student = require( "../../src/practice_5/student.js");
+let  Worker = require( "../../src/practice_5/worker.js");
 describe("Person", () => {
     it("should have field name and age", () => {
         const person = new Person("Tom", 21);
@@ -32,7 +35,7 @@ describe("Person", () => {
         it("should overwrite Person introduce, introduce with name, age and class number", () => {
             const student = new Student("Tom", 21, 2);
             const introduce = student.introduce();
-            expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Student. I am at Class 2.");
+            expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Student. I am at klass 2.");
         });
     });
 
