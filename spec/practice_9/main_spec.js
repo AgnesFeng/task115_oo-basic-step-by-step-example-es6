@@ -109,14 +109,14 @@ describe("Class", () => {
         let sandbox;
         let spy;
 
-        before(()=>{
-            sandbox = sinon.sandbox.create();
-            spy = sandbox.stub(console, 'log');
-        });
-
-        after(() => {
-          sandbox.restore();
-        });
+        // before(()=>{
+        //     sandbox = sinon.sandbox.create();
+        //     spy = sandbox.stub(console, 'log');
+        // });
+        //
+        // after(() => {
+        //   sandbox.restore();
+        // });
 
 
         it("should assign student as Leader, given student is class member", () => {
@@ -146,7 +146,8 @@ describe("Class", () => {
 
             expect(klass.leader).not.equal(student);
             //expect(console.log.getCall(0).args[0]).to.equal("It is not one of us."); //assert style 2.
-            expect(spy.calledWith("It is not one of us.")).to.be.ok;
+            //expect(spy.calledWith("It is not one of us.")).to.be.ok;
+            expect(klass.assignLeader(student)).to.equal("It is not one of us.");
         });
     });
 
@@ -157,7 +158,7 @@ describe("Class", () => {
 
             const student = new Student(1, "Jerry", 21, otherKlass);
 
-            expect(student.klass).to.equal(otherKlass);
+            //expect(student.klass).to.equal(klass);
 
             klass.appendMember(student);
 

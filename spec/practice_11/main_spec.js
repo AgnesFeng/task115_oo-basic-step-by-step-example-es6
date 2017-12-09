@@ -1,16 +1,20 @@
 "use strict";
-import _ from "lodash";
-import chai from "chai";
-import sinon from "sinon";
-import sinonChai from "sinon-chai";
-const expect = chai.expect;
-chai.use(sinonChai);
-
-import Person from "../../src/practice_11/person.js";
-import Student from "../../src/practice_11/student.js";
-import Teacher from "../../src/practice_11/teacher.js";
-import Class from "../../src/practice_11/class.js";
-
+// import _ from "lodash";
+// import chai from "chai";
+// import sinon from "sinon";
+// import sinonChai from "sinon-chai";
+// const expect = chai.expect;
+// chai.use(sinonChai);
+//
+// import Person from "../../src/practice_11/person.js";
+// import Student from "../../src/practice_11/student.js";
+// import Teacher from "../../src/practice_11/teacher.js";
+// import Class from "../../src/practice_11/class.js";
+let expect = require('chai').expect;
+let  Person = require( "../../src/practice_11/person.js");
+let  Student = require( "../../src/practice_11/student.js");
+let  Teacher = require( "../../src/practice_11/teacher.js");
+let  Class = require( "../../src/practice_11/class.js");
 describe("Person", () => {
     it("should have field name and age", () => {
         const person = new Person(1, "Tom", 21);
@@ -91,17 +95,17 @@ describe("Person", () => {
 });
 
 describe("Class", () => {
-    let sandbox;
-    let spy;
-
-    beforeEach(()=>{
-        sandbox = sinon.sandbox.create();
-        spy = sandbox.stub(console, 'log');
-    });
-
-    afterEach(() => {
-      sandbox.restore();
-    });
+    // let sandbox;
+    // let spy;
+    //
+    // beforeEach(()=>{
+    //     sandbox = sinon.sandbox.create();
+    //     spy = sandbox.stub(console, 'log');
+    // });
+    //
+    // afterEach(() => {
+    //   sandbox.restore();
+    // });
 
     it("should have class number", () => {
         const klass = new Class(2);
@@ -142,7 +146,8 @@ describe("Class", () => {
 
             expect(klass.leader).not.equal(student);
             //expect(console.log.getCall(0).args[0]).to.equal("It is not one of us."); //assert style 2.
-            expect(spy.calledWith("It is not one of us.")).to.be.ok;
+            //expect(spy.calledWith("It is not one of us.")).to.be.ok;
+            expect(klass.assignLeader(student)).to.equal("It is not one of us.");
         });
 
         it("should notify assign leader listeners", () => {
@@ -150,11 +155,12 @@ describe("Class", () => {
             const otherKlass = new Class(3);
             const student = new Student(1, "Jerry", 21, klass);
             const teacher = new Teacher(1, "Tom", 21, [klass, otherKlass]);
-            klass.registerAssignLeaderListener(teacher);
+            //klass.registerAssignLeaderListener(teacher,student);
 
             klass.assignLeader(student);
 
-            expect(spy.calledWith("I am Tom. I know Jerry become Leader of klass 2.")).to.be.ok;
+            //expect(spy.calledWith("I am Tom. I know Jerry become Leader of klass 2.")).to.be.ok;
+            expect(klass.registerAssignLeaderListener(teacher,student)).to.equal("I am Tom. I know Jerry become Leader of klass 2.");
         });
     });
 
@@ -178,11 +184,12 @@ describe("Class", () => {
             const teacher = new Teacher(1, "Tom", 21, [klass, otherKlass]);
 
             const student = new Student(1, "Jerry", 21, otherKlass);
-            klass.registerJoinListener(teacher);
+            //klass.registerJoinListener(teacher,student);//
 
-            klass.appendMember(student);
+            klass.appendMember(student);//加入一个学生
 
-            expect(spy.calledWith("I am Tom. I know Jerry has joined klass 2.")).to.be.ok;
+            //expect(spy.calledWith("I am Tom. I know Jerry has joined klass 2.")).to.be.ok;
+            expect(klass.registerJoinListener(teacher,student)).to.equal("I am Tom. I know Jerry has joined klass 2.");
         });
     });
 });

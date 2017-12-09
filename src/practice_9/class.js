@@ -10,6 +10,13 @@ class Class{
         if(student.klass === this){
             student.id = 2;
             this.leader = student;
+        }else{
+            return "It is not one of us."
+        }
+    }
+    appendMember(student) {
+        if (student.klass !== this) {
+            student.klass = this;
         }
     }
 }
